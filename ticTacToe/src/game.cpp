@@ -7,7 +7,16 @@
 
 #include "game.hpp"
 
+Game::Game(){
+	instance = new Game();
+}
+
 Game* Game::getInstance(){
+	return instance;
+
+	if (!instance)   // Only allow one instance of class to be generated.
+		instance = new Game();
+
 	return instance;
 }
 
@@ -99,17 +108,3 @@ bool Game::checkWinner(char player){
 	return false;
 }
 
-
-/*
- *  SINGLETON EXAMPLE
- *
- *  class Singleton
-{
-   public:
-       static Singleton* getInstance( );
-       ~Singleton( );
-   private:
-       Singleton( );
-       static Singleton* instance;
-};
- */

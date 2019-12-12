@@ -14,10 +14,16 @@
 #include "oc.cpp"
 
 class Game{
-	// Constructor
-	Game();
+
 	// Instance
 	static Game* instance;
+
+	// Constructor
+	Game();					// constructor private
+	Game(Game const&){};	// copy constructor private
+	Game& operator=(Game const&){}; // assignement operator is private
+
+
 
 	Cell* board[3][3];
 
