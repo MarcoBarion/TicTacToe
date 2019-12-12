@@ -7,17 +7,13 @@
 
 #include "game.hpp"
 
-Game::Game(){
-	instance = new Game();
-}
+Game::Game(){}
 
 Game* Game::getInstance(){
-	return instance;
 
-	if (!instance)   // Only allow one instance of class to be generated.
-		instance = new Game();
+	static Game instance;
 
-	return instance;
+	return &instance;
 }
 
 
@@ -43,7 +39,7 @@ char Game::getCellValue(int row, int column){
 	return board[row][column] -> getValue();
 }
 
-char Game::assignFiche(int row, int column, char fiche){
+void Game::assignFiche(int row, int column, char fiche){
 	delete board[row][column];
 	fiche=='O' ? board[row][column] = new OC() : board[row][column] = new XC();
 }

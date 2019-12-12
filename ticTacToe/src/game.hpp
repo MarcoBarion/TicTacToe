@@ -16,12 +16,12 @@
 class Game{
 
 	// Instance
-	static Game* instance;
+	//static Game* instance;
 
 	// Constructor
 	Game();					// constructor private
-	Game(Game const&){};	// copy constructor private
-	Game& operator=(Game const&){}; // assignement operator is private
+	//Game(Game const&){};	// copy constructor private
+	//Game& operator=(Game const&){}; // assignement operator is private
 
 
 
@@ -37,7 +37,7 @@ public:
 
 	char getCellValue(int raw, int column);
 
-	char assignFiche(int row, int column, char fiche);
+	void assignFiche(int row, int column, char fiche);
 
 	void deinitializeBoard();
 
@@ -45,7 +45,7 @@ public:
 
 	bool checkWinner(char player);
 
-	~Game();
+	//~Game();
 };
 
 

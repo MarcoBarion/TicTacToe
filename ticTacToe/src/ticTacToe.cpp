@@ -40,40 +40,40 @@ int main() {
 	bool playing = true;
 	char anotherGame ='N';
 
-	Game* game = Game::getInstance();
+	//Game::getInstance();
 
-	game->initializeBoard();
+	Game::getInstance()->initializeBoard();
 	cout<<"*************************"<<endl;
 	cout<<"** LETS START THE GAME **"<<endl;
 	cout<<"*************************"<<endl<<endl;
 
-	game->printBoard();
+	Game::getInstance()->printBoard();
 
 	while( playing ){
 
 		cout<<"Player " <<playerName <<" select a cell: \n";
 		cin>>cell;
 
-		char cellValue = game->getCellValue(cell/3, cell%3);
+		char cellValue = Game::getInstance()->getCellValue(cell/3, cell%3);
 		while(cellValue == 'X' || cellValue == 'O'){
 			cout<<"The location is already occupied. Choose again: ";
 			cin>>cell;
-			cellValue = game->getCellValue(cell/3, cell%3);
+			cellValue = Game::getInstance()->getCellValue(cell/3, cell%3);
 		}
 
 		//delete board[cell/3][cell%3];
 		//playerName=='O' ? board[cell/3][cell%3] = new OC() : board[cell/3][cell%3] = new XC();
-		game->assignFiche(cell/3, cell%3, playerName);
+		Game::getInstance()->assignFiche(cell/3, cell%3, playerName);
 
-		game->printBoard();
+		Game::getInstance()->printBoard();
 
-		if( game->checkWinner(playerName) ){
+		if( Game::getInstance()->checkWinner(playerName) ){
 			cout<<"*************************"<<endl;
 			cout<<"*****     "<<playerName<<" WON!    *****"<<endl;
 			cout<<"*************************"<<endl<<endl;
 			playing = false;
 		}
-		if( game->checkBlockedGame() ){
+		if( Game::getInstance()->checkBlockedGame() ){
 			cout<<"*************************"<<endl;
 			cout<<"***** YOU ARE EVEN  *****"<<endl;
 			cout<<"*************************"<<endl<<endl;
@@ -88,10 +88,10 @@ int main() {
 			} while(anotherGame !='Y' && anotherGame !='N');
 
 			if(anotherGame == 'Y'){
-				game->deinitializeBoard();
-				game->initializeBoard();
+				Game::getInstance()->deinitializeBoard();
+				Game::getInstance()->initializeBoard();
 				playing = true;
-				game->printBoard();
+				Game::getInstance()->printBoard();
 			}
 		}
 
